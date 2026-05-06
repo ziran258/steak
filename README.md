@@ -30,4 +30,4 @@ pnpm db:seed
 
 ## Deployment notes
 
-The project includes a standalone Next.js Dockerfile and a `docker-compose.yml` with PostgreSQL for local or VPS smoke testing. In Dokploy, connect the GitHub repository, set environment variables, and point the domain through Cloudflare DNS.
+The project includes a standalone Next.js Dockerfile, a local `docker-compose.yml`, and a production-oriented `docker-compose.vps.yml` for the first no-domain VPS deployment. Use `scripts/deploy-vps.sh` to bootstrap Docker on Ubuntu, clone the GitHub repo, create server-side production environment variables, and run a smoke test. Later, connect the GitHub repository in Dokploy, set environment variables, and point the domain through Cloudflare DNS.
