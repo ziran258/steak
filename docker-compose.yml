@@ -1,0 +1,26 @@
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      DATABASE_URL: postgres://steak:steak@postgres:5432/steak_wiki
+    ports:
+      - "3000:3000"
+
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: steak
+      POSTGRES_PASSWORD: steak
+      POSTGRES_DB: steak_wiki
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres-data:
